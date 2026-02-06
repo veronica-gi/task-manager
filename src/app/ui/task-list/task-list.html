@@ -1,13 +1,12 @@
-<h2>My Tasks</h2>
+<h2>My tasks</h2>
 
 <ul>
-  <li>
-    <input type="checkbox" />
-    Learn Angular basics
-  </li>
-  <li>
-    <input type="checkbox" />
-    Build a Task Manager app
+  <li *ngFor="let task of tasks">
+    <label>
+      <input type="checkbox" [checked]="task.completed" />
+      <span>{{ task.title }}</span>
+    </label>
   </li>
 </ul>
+
 
