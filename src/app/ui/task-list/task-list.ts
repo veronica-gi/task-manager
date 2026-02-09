@@ -11,10 +11,24 @@ import { FormsModule } from '@angular/forms';
 })
 export class TaskList {
   tasks = [
-    { id: 1, title: 'Learn Angular', completed: false },
-    { id: 2, title: 'Create Task Manager', completed: true },
-    { id: 3, title: 'Refactor core logic', completed: false },
+    { id: 1, title: 'Learn Angular', status: 'pending' },
+    { id: 2, title: 'Create Task Manager', status: 'in-progress' },
+    { id: 3, title: 'Refactor core logic', status: 'done' },
   ];
+
+get pendingTasks() {
+  return this.tasks.filter(t => t.status === 'pending');
+}
+
+get inProgressTasks() {
+  return this.tasks.filter(t => t.status === 'in-progress');
+}
+
+get doneTasks() {
+  return this.tasks.filter(t => t.status === 'done');
+}
+
+
 
 newTaskTitle = '';
 
@@ -24,7 +38,7 @@ newTaskTitle = '';
     this.tasks.push({
       id: Date.now(),
       title: this.newTaskTitle,
-      completed: false,
+      status: 'pending',
     });
 
     this.newTaskTitle = '';

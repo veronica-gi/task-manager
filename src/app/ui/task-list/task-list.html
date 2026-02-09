@@ -9,18 +9,41 @@
   <button (click)="addTask()">Add</button>
 </div>
 
-<ul>
-  <li *ngFor="let task of tasks">
-    <input
-      type="checkbox"
-      [(ngModel)]="task.completed"
-    />
+<div class="task-board">
 
-    <span [class.completed]="task.completed">
-      {{ task.title }}
-    </span>
+  <div class="column">
+    <h3>Pendientes</h3>
 
-    <button (click)="deleteTask(task.id)">✕</button>
-  </li>
-</ul>
+    <ul>
+      <li *ngFor="let task of pendingTasks">
+        {{ task.title }}
+        <button (click)="task.status = 'in-progress'">▶</button>
+      </li>
+    </ul>
+  </div>
+
+  <div class="column">
+    <h3>En proceso</h3>
+
+    <ul>
+      <li *ngFor="let task of inProgressTasks">
+        {{ task.title }}
+        <button (click)="task.status = 'done'">✔</button>
+      </li>
+    </ul>
+  </div>
+
+  <div class="column">
+    <h3>Completadas</h3>
+
+    <ul>
+      <li *ngFor="let task of doneTasks">
+        {{ task.title }}
+        <button (click)="task.status = 'pending'">↺</button>
+      </li>
+    </ul>
+  </div>
+
+</div>
+
 
