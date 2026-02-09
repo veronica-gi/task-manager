@@ -1,23 +1,35 @@
+.task-board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  
+}
+
+.column {
+  background: #f4f4f4;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.column h3 {
+  text-align: center;
+}
+
 ul {
   list-style: none;
   padding: 0;
 }
 
 li {
-  margin-bottom: 8px;
-}
-
-.completed {
-  text-decoration: line-through;
-  opacity: 0.6;
-}
-
-.add-task {
-  margin-bottom: 1rem;
-}
-
-li {
+  background: white;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
   display: flex;
-  align-items: center;
-  gap: 0.5rem;
+  justify-content: space-between;
+  border-radius: 4px;
 }
+
+button {
+  cursor: pointer;
+}
+
