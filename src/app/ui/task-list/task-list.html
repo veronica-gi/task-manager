@@ -17,7 +17,10 @@
     <ul>
       <li *ngFor="let task of pendingTasks">
         {{ task.title }}
-        <button (click)="task.status = 'in-progress'">▶</button>
+        <div>
+          <button (click)="updateStatus(task.id, 'in-progress')">▶</button>
+          <button (click)="deleteTask(task.id)">✕</button>
+        </div>
       </li>
     </ul>
   </div>
@@ -28,7 +31,10 @@
     <ul>
       <li *ngFor="let task of inProgressTasks">
         {{ task.title }}
-        <button (click)="task.status = 'done'">✔</button>
+        <div>
+          <button (click)="updateStatus(task.id, 'done')">✔</button>
+          <button (click)="deleteTask(task.id)">✕</button>
+        </div>
       </li>
     </ul>
   </div>
@@ -39,11 +45,15 @@
     <ul>
       <li *ngFor="let task of doneTasks">
         {{ task.title }}
-        <button (click)="task.status = 'pending'">↺</button>
+        <div>
+          <button (click)="updateStatus(task.id, 'pending')">↺</button>
+          <button (click)="deleteTask(task.id)">✕</button>
+        </div>
       </li>
     </ul>
   </div>
 
 </div>
+
 
 

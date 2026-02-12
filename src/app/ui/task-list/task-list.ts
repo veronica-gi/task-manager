@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { TaskService } from '../../core/services/task.service';
+import { Task } from '../../core/models/task.model';
 
 @Component({
   selector: 'app-task-list',
@@ -10,42 +12,43 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './task-list.css',
 })
 export class TaskList {
-  tasks = [
-    { id: 1, title: 'Learn Angular', status: 'pending' },
-    { id: 2, title: 'Create Task Manager', status: 'in-progress' },
-    { id: 3, title: 'Refactor core logic', status: 'done' },
-  ];
 
-get pendingTasks() {
-  return this.tasks.filter(t => t.status === 'pending');
-}
+  newTaskTitle = '';
 
-get inProgressTasks() {
-  return this.tasks.filter(t => t.status === 'in-progress');
-}
+  constructor(private taskService: TaskService) {}
 
-get doneTasks() {
-  return this.tasks.filter(t => t.status === 'done');
-}
+  // Obtener todas las tareas desde el service
+  get tasks(): Task[] {
+    return this.taskService.getTasks();
+  }
 
+  get pendingTasks(): Task[] {
+    return this.tasks.filter(t => t.status === 'pending');
+  }
 
+  get inProgressTasks(): Task[] {
+    return this.tasks.filter(t => t.status === 'in-progress');
+  }
 
-newTaskTitle = '';
+  get doneTasks(): Task[] {
+    return this.tasks.filter(t => t.status === 'done');
+  }
 
   addTask() {
     if (!this.newTaskTitle.trim()) return;
 
-    this.tasks.push({
-      id: Date.now(),
-      title: this.newTaskTitle,
-      status: 'pending',
-    });
-
+    this.taskService.addTask(this.newTaskTitle);
     this.newTaskTitle = '';
   }
 
   deleteTask(id: number) {
-    this.tasks = this.tasks.filter(task => task.id !== id);
+    this.taskService.deleteTask(id);
   }
+
+  updateStatus(id: number, status: 'pending' | 'in-progress' | 'done') {
+    this.taskService.updateStatus(id, status);
+  }
+
 }
+
 
