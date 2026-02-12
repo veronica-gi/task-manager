@@ -8,35 +8,66 @@ export type TaskStatus = 'pending' | 'in-progress' | 'done';
 })
 export class TaskService {
 
-  private tasks: Task[] = [
-    { id: 1, title: 'Learn Angular', status: 'pending' },
-    { id: 2, title: 'Create Task Manager', status: 'in-progress' },
-    { id: 3, title: 'Refactor core logic', status: 'done' },
-  ];
+  private storageKey = 'tasks';
 
-  private nextId = 4;
+  private tasks: Task[] = [];
 
+  private nextId = 1;
+
+  constructor() {
+    this.loadFromStorage();
+  }
+
+  // Obtener tareas
   getTasks(): Task[] {
     return this.tasks;
   }
 
+  // Añadir tarea
   addTask(title: string) {
     this.tasks.push({
       id: this.nextId++,
       title,
       status: 'pending'
     });
+
+    this.saveToStorage();
   }
 
+  // Actualizar estado
   updateStatus(id: number, status: TaskStatus) {
     const task = this.tasks.find(t => t.id === id);
     if (task) {
       task.status = status;
+      this.saveToStorage();
     }
   }
 
+  //  Eliminar tarea
   deleteTask(id: number) {
     this.tasks = this.tasks.filter(t => t.id !== id);
+    this.saveToStorage();
+  }
+
+  // ---------------------------
+  //  Persistencia
+  // ---------------------------
+
+  private saveToStorage() {
+    localStorage.setItem(this.storageKey, JSON.stringify(this.tasks));
+  }
+
+  private loadFromStorage() {
+    const stored = localStorage.getItem(this.storageKey);
+
+    if (stored) {
+      this.tasks = JSON.parse(stored);
+
+      // Ajustar nextId al mayor id existente + 1
+      const maxId = this.tasks.reduce((max, task) => Math.max(max, task.id), 0);
+      this.nextId = maxId + 1;
+    }
   }
 }
+
 
