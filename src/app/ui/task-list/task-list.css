@@ -1,35 +1,141 @@
+/* Fondo general */
+:host {
+  display: block;
+  min-height: 100vh;
+  padding: 2rem;
+  background: #9b9fbe; 
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Título */
+h2 {
+  text-align: center;
+  color: #ffffff;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  letter-spacing: 1px;
+}
+
+/* Input añadir tarea */
+.add-task {
+  display: flex;
+  justify-content: center;
+  gap: 0.8rem;
+  margin-bottom: 2rem;
+}
+
+.add-task input {
+  padding: 0.7rem 1rem;
+  border-radius: 30px;
+  border: none;
+  width: 260px;
+  outline: none;
+  font-size: 0.95rem;
+}
+
+.add-task button {
+  background: #ff4d6d;
+  border: none;
+  padding: 0.7rem 1.4rem;
+  border-radius: 30px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.add-task button:hover {
+  background: #ff1e4d;
+  transform: translateY(-2px);
+}
+
+/* Tablero */
 .task-board {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
-  
+  gap: 1.5rem;
 }
 
+/* Columnas */
 .column {
-  background: #f4f4f4;
+  background: #c9cfeb;
   padding: 1rem;
-  border-radius: 8px;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+/* Colores de encabezado */
+.column:nth-child(1) h3 {
+  color: #ff595e;
+}
+
+.column:nth-child(2) h3 {
+  color: #c59207;
+}
+
+.column:nth-child(3) h3 {
+  color: #8ac926;
 }
 
 .column h3 {
   text-align: center;
+  margin-bottom: 1rem;
 }
 
+/* Lista */
 ul {
   list-style: none;
   padding: 0;
 }
 
+/* Tarjetas */
 li {
-  background: white;
-  padding: 0.5rem;
-  margin-bottom: 0.5rem;
+  background: #ffffff;
+  padding: 0.8rem;
+  margin-bottom: 0.8rem;
   display: flex;
   justify-content: space-between;
-  border-radius: 4px;
+  align-items: center;
+  border-radius: 10px;
+  transition: 0.2s ease;
+  font-weight: 500;
 }
 
-button {
-  cursor: pointer;
+li:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
 }
+
+/* Botones dentro de tarjeta */
+li button {
+  border: none;
+  padding: 0.4rem 0.7rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  color: white;
+  transition: 0.2s ease;
+}
+
+/* Botón mover */
+li button:first-child {
+  background: #05c97e;
+}
+
+li button:first-child:hover {
+  background: #3a0ca3;
+  transform: scale(1.05);
+}
+
+/* Botón eliminar */
+li button:last-child {
+  background: #ef233c;
+}
+
+li button:last-child:hover {
+  background: #d90429;
+  transform: scale(1.05);
+}
+
 
