@@ -139,3 +139,16 @@ li button:last-child:hover {
 }
 
 
+/* 📱 Tablets */
+@media (max-width: 900px) {
+  .task-board {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* 📱 Móviles */
+@media (max-width: 600px) {
+  .task-board {
+    grid-template-columns: 1fr;
+  }
+}
