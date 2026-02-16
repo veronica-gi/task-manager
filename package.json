@@ -2,6 +2,7 @@
   "name": "task-manager-app",
   "version": "0.0.0",
   "scripts": {
+    "deploy": "ng build --base-href=https://veronica-gi.github.io/task-manager/ && angular-cli-ghpages --dir=dist/task-manager-app",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
