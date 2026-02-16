@@ -36,9 +36,11 @@ cd task-manager
 npm install
 ng serve
 
+---
+
 ## 🌐 Live Demo
 
-Check out the live demo of the Task Manager App here: [Live Demo](https://veronica-gi.github.io/task-manager/) 🚀
+Check out the live demo of the Task Manager App here: [Live Demo](https://veronica-gi.github.io/task-manager/) 
 
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
