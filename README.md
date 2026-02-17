@@ -3,6 +3,7 @@
 A simple task management application built with **Angular Standalone Components**.  
 Allows you to create tasks, move them between statuses (pending, in-progress, completed), and delete them.
 
+Check out the live demo of the Task Manager App here: [Live Demo](https://veronica-gi.github.io/task-manager/) 
 ---
 
 ## 📦 Technologies
@@ -27,20 +28,17 @@ Allows you to create tasks, move them between statuses (pending, in-progress, co
 
 ## 💻 Installation
 
-1. Clone the repository:
+Clone the repository:
 
 ```bash
 git clone https://github.com/veronica-gi/task-manager.git
 cd task-manager
 
 npm install
+
 ng serve
 
----
 
-## 🌐 Live Demo
-
-Check out the live demo of the Task Manager App here: [Live Demo](https://veronica-gi.github.io/task-manager/) 
 
 
 
